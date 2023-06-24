@@ -8,6 +8,13 @@ https://myfoodexplorer.vercel.app/
 
 ![App Screenshot](https://i.imgur.com/GWE175c.png)
 
+#### 🔑 Utilize a conta abaixo para ver a aplicação do ponto de vista do admin
+
+```bash
+  e-mail: admin@foodexplorer.com
+  senha: 123456
+```
+
 
 ## 🚀 Tecnologias
 
