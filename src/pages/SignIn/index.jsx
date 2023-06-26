@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../context/auth';
 
 import { Container, Logo, Form } from './styles';

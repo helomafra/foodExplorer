@@ -15,6 +15,9 @@ import { Link } from 'react-router-dom';
 
 import { ArrowLeft, Camera } from '@phosphor-icons/react';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 export function Edit() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -42,10 +45,8 @@ export function Edit() {
   }
 
   function handleAddIngredient() {
-    if (newIngredient.length < 3) {
-      return alert(
-        'Erro: Você está tentando inserir um nome de ingrediente inválido!'
-      );
+    if (newIngredient.length < 1) {
+      return toast.error('Adicione um ingrediente válido!');
     } else {
       setIngredients((prevState) => [...prevState, newIngredient]);
       setNewIngredient('');
@@ -60,33 +61,33 @@ export function Edit() {
 
   async function handleUpdateDish() {
     if (!image) {
-      return alert('Erro: Você não carregou a nova imagem do prato!');
+      return toast.error('Carregue a nova imagem do prato!');
     }
 
     if (!title) {
-      return alert('Erro: Você não informou o nome do prato!');
+      return toast.error('O nome do prato está vazio!');
     }
 
     if (ingredients.length < 1) {
-      return alert('Erro: Adicione pelo menos um ingrediente!');
+      return toast.error('Adicione ao menos um ingrediente!');
     }
 
     if (newIngredient) {
-      return alert(
-        'Erro: Você deixou um ingrediente no campo para adicionar, mas não clicou em adicionar. Clique no sinal de + para adicionar!'
+      return toast.error(
+        'Você deixou um ingrediente no campo para adicionar, mas não clicou em adicionar. Clique no sinal de + para adicionar!'
       );
     }
 
     if (!category) {
-      return alert('Erro: Você não selecionou a categoria do prato!');
+      return toast.error('Selecione a categoria do prato!');
     }
 
     if (!price) {
-      return alert('Erro: Você não informou o preço do prato!');
+      return toast.error('Informe o preço do prato!');
     }
 
     if (!description) {
-      return alert('Erro: Você não informou uma descrição para o prato!');
+      return toast.error('Informe uma descrição para o prato!');
     }
 
     const formData = new FormData();
@@ -100,12 +101,12 @@ export function Edit() {
 
     await api
       .put(`/plates/${params.id}`, formData)
-      .then(alert('Prato atualizado com sucesso!'), navigate('/'))
+      .then(toast.success('Prato atualizado com sucesso!'))
       .catch((error) => {
         if (error.response) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         } else {
-          alert('Erro ao atualizar o prato!');
+          toast.error('Erro ao atualizar o prato!');
         }
       });
   }
@@ -132,7 +133,7 @@ export function Edit() {
 
     if (isConfirm) {
       await api.delete(`/plates/${params.id}`).then(() => {
-        alert('Item removido com sucesso!');
+        toast.success('Item removido com sucesso!');
         navigate('/');
       });
     } else {
@@ -263,6 +264,8 @@ export function Edit() {
       </Content>
 
       <Footer />
+
+      <ToastContainer autoClose={2000} position="top-right" />
     </Container>
   );
 }
