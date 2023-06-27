@@ -129,6 +129,7 @@ export function New() {
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
               />
+              {image && <p>{image.name}</p>}
             </div>
 
             <div className="dish">

@@ -14,6 +14,7 @@ export const Content = styled.div`
   padding: 2.4rem;
   background: ${({ theme }) => theme.COLORS.BACKGROUND_600};
   min-width: 28rem;
+  max-width: 30rem;
 
   .container {
     width: 100%;
@@ -48,6 +49,10 @@ export const Content = styled.div`
     font-size: 1.4rem;
     font-weight: 400;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .price {
