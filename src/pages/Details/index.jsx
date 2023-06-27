@@ -11,6 +11,7 @@ import { Button } from '../../components/Button';
 
 import { api } from '../../services/api';
 import { useCart } from '../../context/cart';
+import { useAuth } from '../../context/auth';
 
 import { ArrowLeft } from '@phosphor-icons/react';
 
@@ -27,6 +28,7 @@ export function Details() {
   const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`;
 
   const { handleAddDishToCart } = useCart();
+  const { user } = useAuth();
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -73,13 +75,15 @@ export function Details() {
                 <div className="footer">
                   <h4>R$ {data.price}</h4>
 
-                  <Button
-                    title="Incluir no carrinho"
-                    onClick={() =>
-                      handleAddDishToCart(data, quantity, imageURL)
-                    }
-                    variant="red"
-                  />
+                  {user.isAdmin ? null : (
+                    <Button
+                      title="Incluir no carrinho"
+                      onClick={() =>
+                        handleAddDishToCart(data, quantity, imageURL)
+                      }
+                      variant="red"
+                    />
+                  )}
                 </div>
               </div>
             </div>

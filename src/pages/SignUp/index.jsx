@@ -19,7 +19,7 @@ export function SignUp() {
 
   async function handleSignUp() {
     try {
-      if (name || email || password === null) {
+      if (!name || !email || !password) {
         toast.error('Preencha todos os campos!');
       }
 
