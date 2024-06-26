@@ -1,14 +1,16 @@
 # Food Explorer
 
 
-O Food Explorer é um cardápio digital de restaurante. O administrador pode criar, editar ou excluir novos pratos, o usuário pode visualizar detalhes dos pratos e os adicionar a um carrinho. 
+The Food Explorer is a digital restaurant menu. The administrator can create, edit, or delete new dishes, and the user can view dish details and add them to a cart.
 
-## Acesse
-https://myfoodexplorer.vercel.app/
+## Access here
+- [Explore the site](https://myfoodexplorer.vercel.app)
+- [Backend repository](https://github.com/helomafra/foodExplorer-api)
 
 ![App Screenshot](https://i.imgur.com/GWE175c.png)
 
-#### 🔑 Utilize a conta abaixo para ver a aplicação do ponto de vista do admin
+
+#### 🔑 Use the account below to view the application from the admin's perspective.
 
 ```bash
   e-mail: admin@foodexplorer.com
@@ -16,7 +18,7 @@ https://myfoodexplorer.vercel.app/
 ```
 
 
-## 🚀 Tecnologias
+## 🚀 Technologies
 
 - ReactJS
 - JavaScript
@@ -25,7 +27,7 @@ https://myfoodexplorer.vercel.app/
 - Axios
 
 
-## Documentação de Funcionamento
+## Run project
 
 ```bash
 git clone https://github.com/helomafra/foodExplorer.git && cd food-explorer
@@ -38,3 +40,4 @@ npm install
 ```bash
 npm run dev
 ```
+
