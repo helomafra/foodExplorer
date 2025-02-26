@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { Container, Content } from './styles.js';
-import imagePlaceholder from '../../assets/image-not-found-icon.svg';
+import { useState } from "react"
+import { Container, Content } from "./styles.js"
+import imagePlaceholder from "../../assets/image-not-found-icon.svg"
 
-import { Button } from '../Button';
-import { Link } from 'react-router-dom';
-import { Pen } from '@phosphor-icons/react';
+import { Button } from "../Button"
+import { Link } from "react-router-dom"
+import { Pen } from "@phosphor-icons/react"
 
-import { api } from '../../services/api';
-import { useAuth } from '../../context/auth';
-import { useCart } from '../../context/cart';
+import { api } from "../../services/api"
+import { useAuth } from "../../context/auth"
+import { useCart } from "../../context/cart"
 
 export function Card({ data, ...rest }) {
-  const [quantity, setQuantity] = useState(1);
-  const { user } = useAuth();
-  const { handleAddDishToCart } = useCart();
+  const [quantity, setQuantity] = useState(1)
+  const { user } = useAuth()
+  const { handleAddDishToCart } = useCart()
 
   const imageURL = data.image
-    ? `${api.defaults.baseURL}/files/${data.image}`
-    : imagePlaceholder;
+    ? `${api.defaults.baseURL}files/${data.image}`
+    : imagePlaceholder
 
   return (
     <Container>
@@ -27,7 +27,7 @@ export function Card({ data, ...rest }) {
           <Link to={`/details/${data.id}`}>
             <h3 className="product-title">
               {data.title}
-              {' >'}
+              {" >"}
             </h3>
           </Link>
           <p className="description">{data.description}</p>
@@ -47,5 +47,5 @@ export function Card({ data, ...rest }) {
         </div>
       </Content>
     </Container>
-  );
+  )
 }
