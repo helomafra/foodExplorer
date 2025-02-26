@@ -1,44 +1,44 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from "react"
+import { useParams, useNavigate, Link } from "react-router-dom"
 
-import { Container, Content, Ingredient, PurchaseCard } from './styles.js';
+import { Container, Content, Ingredient, PurchaseCard } from "./styles.js"
 
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { Ingredients } from '../../components/Ingredients';
-import { ButtonText } from '../../components/ButtonText';
-import { Button } from '../../components/Button';
+import { Header } from "../../components/Header"
+import { Footer } from "../../components/Footer"
+import { Ingredients } from "../../components/Ingredients"
+import { ButtonText } from "../../components/ButtonText"
+import { Button } from "../../components/Button"
 
-import { api } from '../../services/api';
-import { useCart } from '../../context/cart';
-import { useAuth } from '../../context/auth';
+import { api } from "../../services/api"
+import { useCart } from "../../context/cart"
+import { useAuth } from "../../context/auth"
 
-import { ArrowLeft } from '@phosphor-icons/react';
+import { ArrowLeft } from "@phosphor-icons/react"
 
 export function Details() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   function handleBack() {
-    navigate(-1);
+    navigate(-1)
   }
 
-  const [data, setData] = useState(null);
-  const params = useParams();
+  const [data, setData] = useState(null)
+  const params = useParams()
 
-  const imageURL = data && `${api.defaults.baseURL}/files/${data.image}`;
+  const imageURL = data && `${api.defaults.baseURL}files/${data.image}`
 
-  const { handleAddDishToCart } = useCart();
-  const { user } = useAuth();
-  const [quantity, setQuantity] = useState(1);
+  const { handleAddDishToCart } = useCart()
+  const { user } = useAuth()
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     async function fetchPlateDetail() {
-      const response = await api.get(`/plates/${params.id}`);
-      setData(response.data);
+      const response = await api.get(`/plates/${params.id}`)
+      setData(response.data)
     }
 
-    fetchPlateDetail();
-  }, []);
+    fetchPlateDetail()
+  }, [])
 
   return (
     <Container>
@@ -93,5 +93,5 @@ export function Details() {
 
       <Footer />
     </Container>
-  );
+  )
 }
